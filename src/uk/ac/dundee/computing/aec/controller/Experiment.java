@@ -7,10 +7,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import uk.ac.dundee.computing.aec.util.*;
+
 /**
  * Servlet implementation class Experiment
  */
 @WebServlet({ "/Experiment", "/Experiment/*" })
+//Usage /Experiment/#Experiment/#stage
+
 public class Experiment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -27,6 +31,8 @@ public class Experiment extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String [] args= Convertors.SplitRequestPath(request);
+		int argv =args.length;
 	}
 
 	/**
