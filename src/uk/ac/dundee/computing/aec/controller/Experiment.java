@@ -1,6 +1,9 @@
 package uk.ac.dundee.computing.aec.controller;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import uk.ac.dundee.computing.aec.util.*;
-
+import uk.ac.dundee.computing.aec.model.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 /**
  * Servlet implementation class Experiment
  */
@@ -33,6 +40,9 @@ public class Experiment extends HttpServlet {
 		// TODO Auto-generated method stub
 		String [] args= Convertors.SplitRequestPath(request);
 		int argv =args.length;
+		MassSpec ms = new MassSpec();
+		List <Point2D.Double> Points = ms.getMassSpec();
+		
 	}
 
 	/**

@@ -14,7 +14,7 @@ public class MassSpec {
 	}
 
 	
-	List <Point2D.Double> getMassSpec(){
+	public List <Point2D.Double> getMassSpec(){
 		//This is a dummy class returning a Pseudo MAssSpec
 		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
 		for (int x=0;x<100;x++){
