@@ -8,9 +8,12 @@
     	<title>GlassFish JSP Page</title>
     	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssgrids/grids-min.css">
     	<link rel="stylesheet" type="text/css" href="Style.css">
- 
+         <script lang="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+    	<script src="Scripts/Ajax.js"></script>
     	<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
     	<script src="Scripts/YUI.js"></script>
+    	
+
   </head>
   <body>
     <h1>Hello World!</h1>

@@ -30,7 +30,9 @@ YUI().use('charts', function (Y) {
 	                    {category:"5/4/2010", values:200},
 	                    {category:"5/5/2010", values:5000}
 	                ];
-    var mychart = new Y.Chart({
+    loadValues();
+	var mychart = new Y.Chart({
+    	
         dataProvider: myDataValues,
         render: "#mychart"
     });
