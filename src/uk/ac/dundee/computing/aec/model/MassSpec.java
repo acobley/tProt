@@ -18,14 +18,15 @@ public class MassSpec {
 		//This is a dummy class returning a Pseudo MAssSpec
 		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
 		for (int x=0;x<100;x++){
-			double Y=getNormal((double)x);
+			double Y=getNormal((double)x,2,70);
 			Point2D.Double point=  new Point2D.Double(x,Y);
 			Points.add(point);
 		}
+		
 		return Points;
 	}
 	
-	double getNormal(double x){
+	double getNormal(double x,double sd, double mu){
 		double Y;
 		Y=100.0*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
 		return Y;
