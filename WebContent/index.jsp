@@ -7,12 +7,15 @@
     	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     	<title>GlassFish JSP Page</title>
     	<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.1/build/cssgrids/grids-min.css">
+    	<link rel="stylesheet" type="text/css" href="Style.css">
+ 
     	<script src="http://yui.yahooapis.com/3.4.1/build/yui/yui-min.js"></script>
     	<script src="Scripts/YUI.js"></script>
   </head>
   <body>
     <h1>Hello World!</h1>
     
+
     <div id="demo">
     <ul>
         <li><a href="#foo">foo</a></li>
@@ -20,7 +23,10 @@
         <li><a href="#baz">baz</a></li>
     </ul>
     <div>
-        <div id="foo">foo content</div>
+        <div id="foo">foo content
+        <div id="mychart"></div>
+        </div>
+        
         <div id="bar">bar content</div>
         <div id="baz">baz content</div>
     </div>

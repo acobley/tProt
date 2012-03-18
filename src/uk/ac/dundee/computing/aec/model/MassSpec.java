@@ -27,7 +27,7 @@ public class MassSpec {
 	
 	double getNormal(double x){
 		double Y;
-		Y=1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
+		Y=100.0*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
 		return Y;
 	}
 }
