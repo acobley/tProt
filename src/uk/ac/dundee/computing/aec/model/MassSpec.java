@@ -23,7 +23,7 @@ public class MassSpec {
 	public List <Point2D.Double> getMassSpec(){
 		//This is a dummy class returning a Pseudo MAssSpec
 		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
-		for (double x=1079;x<1084;x=x+0.01){
+		for (double x=1079;x<1084;x=x+0.03){
 			double Y=getNormal(x,sd[0],mu[0],height[0]);
 			Point2D.Double point=  new Point2D.Double(x,Y);
 			Points.add(point);
@@ -53,6 +53,9 @@ public class MassSpec {
 			Point2D.Double point=  new Point2D.Double(x,Y);
 			Points.add(point);
 		}
+		Iterator<Point2D.Double> iterator;
+		iterator = Points.iterator(); 
+
 		return Points;
 	}
 	
