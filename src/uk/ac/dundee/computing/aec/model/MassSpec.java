@@ -51,16 +51,19 @@ public class MassSpec {
 		Points.add(point);
 		
 		for (int j=0;j<5;j++){
-			for (double i=-2; i<3;i++){
-				double x=i*sd[j]/5.0+mu[j];
+			double step=sd[j]/5;
+			System.out.println("Step "+step);
+			for (double i=-20*step; i<30*step;i=i+step){
+				double x=i*sd[j]+mu[j];
 				double Y=getNormal(x,sd[j],mu[j],height[j]);
+				System.out.println(i+" : "+x+" :" +Y);
 				point=  new Point2D.Double(x,Y);
 				Points.add(point);
 			}
 		}
 		point=  new Point2D.Double(1084,0);
 		Points.add(point);
- 
+        System.out.flush();
 
 		return Points;
 	}

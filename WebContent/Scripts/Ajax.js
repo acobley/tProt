@@ -55,7 +55,7 @@ function loadIds(Y)
 	    	
 	        dataProvider: Values,
 	        render: "#idschart",
-	        type: "line"
+	        type: "markerseries"
 	    });
 	}, "json");
 }
