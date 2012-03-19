@@ -47,14 +47,20 @@ public class MassSpec {
 	public List <Point2D.Double> getIdentifedSpectra(){
 		//This is a dummy class returning a Pseudo MAssSpec
 		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
-		for (int i=-2; i<3;i++){
-			double x=i*sd[0]+mu[0];
-			double Y=getNormal(x,sd[0],mu[0],height[0]);
-			Point2D.Double point=  new Point2D.Double(x,Y);
-			Points.add(point);
+		Point2D.Double point=  new Point2D.Double(1079,0);
+		Points.add(point);
+		
+		for (int j=0;j<5;j++){
+			for (double i=-2; i<3;i++){
+				double x=i*sd[j]/5.0+mu[j];
+				double Y=getNormal(x,sd[j],mu[j],height[j]);
+				point=  new Point2D.Double(x,Y);
+				Points.add(point);
+			}
 		}
-		Iterator<Point2D.Double> iterator;
-		iterator = Points.iterator(); 
+		point=  new Point2D.Double(1084,0);
+		Points.add(point);
+ 
 
 		return Points;
 	}
