@@ -18,8 +18,8 @@ public class MassSpec {
 	public List <Point2D.Double> getMassSpec(){
 		//This is a dummy class returning a Pseudo MAssSpec
 		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
-		for (int x=0;x<100;x++){
-			double Y=getNormal((double)x,2,20,100);
+		for (double x=1079;x<1084;x=x+0.01){
+			double Y=getNormal(x,0.01,1080.0156,100);
 			Point2D.Double point=  new Point2D.Double(x,Y);
 			Points.add(point);
 		}
@@ -30,9 +30,10 @@ public class MassSpec {
 			int index=Points.indexOf(point);
 			double x=point.getX();
 			double y=point.getY();
-			y=y+getNormal((double)x,2.5,40,70);
-			y=y+getNormal((double)x,3.0,60,50);
-			y=y+getNormal((double)x,4.5,80,30);
+			y=y+getNormal((double)x,0.01,1080.5170,90);
+			y=y+getNormal((double)x,0.01,1081.0184,50);
+			y=y+getNormal((double)x,0.01,1081.5200,30);
+			y=y+getNormal((double)x,0.01,1082.0219,20);
 			point.setLocation(x, y);
 			Points.set(index,point);
 		}
@@ -41,7 +42,7 @@ public class MassSpec {
 	
 	double getNormal(double x,double sd, double mu,double height){
 		double Y;
-		Y=100.0*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
+		Y=height*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
 		return Y;
 	}
 }
