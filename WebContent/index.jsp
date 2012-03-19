@@ -21,7 +21,7 @@
 
     <div id="demo">
     <ul>
-        <li><a href="#foo">foo</a></li>
+        <li><a href="#foo">Stage 1</a></li>
         <li><a href="#bar">bar</a></li>
         <li><a href="#baz">baz</a></li>
     </ul>
