@@ -28,6 +28,8 @@
     <div>
         <div id="foo">foo content
         <div id="mychart"></div>
+        <hr>
+         <div id="idschart"></div>
         </div>
         
         <div id="bar">bar content</div>

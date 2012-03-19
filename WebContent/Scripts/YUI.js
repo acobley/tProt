@@ -31,6 +31,7 @@ YUI().use('charts', function (Y) {
 	                    {category:"5/5/2010", values:5000}
 	                ];
     loadValues(Y);
+    loadIds(Y);
 	
 });
 

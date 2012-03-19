@@ -21,7 +21,8 @@ import java.awt.geom.Point2D.Double;
  * Servlet implementation class Experiment
  */
 @WebServlet({ "/Experiment", "/Experiment/*" })
-//Usage /Experiment/#Experiment/#stage
+//Usage /Experiment/#Experiment/#stage/#substage
+//      /0/1/2/3
 
 public class Experiment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -41,13 +42,29 @@ public class Experiment extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String [] args= Convertors.SplitRequestPath(request);
+		int arg[] = new int[20];
 		int argv =args.length;
+		System.out.println(""+argv);
 		for (int i=0;i<argv;i++){
 			System.out.println(i+" : "+ args[i]);
+			try{
+				arg[i]=Integer.parseInt(args[i]);
+			}catch(Exception et){
+				System.out.println("Can Not convert number "+et);
+			}
 		}
 		MassSpec ms = new MassSpec();
-		List <Point2D.Double> Points = ms.getMassSpec();
-		request.setAttribute("Data", Points);
+		if (argv>1){
+			switch(arg[2]){
+			case 1:if (argv>4){
+				List <Point2D.Double> Ids = ms.getIdentifedSpectra();
+				request.setAttribute("Data", Ids);
+			}else{
+				List <Point2D.Double> Points = ms.getMassSpec();
+				request.setAttribute("Data", Points);
+			}
+		}
+		}
 		RequestDispatcher rdjson=request.getRequestDispatcher("/RenderJson");
 		rdjson.forward(request,response);
 		
