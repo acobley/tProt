@@ -22,7 +22,11 @@ import java.awt.geom.Point2D.Double;
  */
 @WebServlet({ "/Experiment", "/Experiment/*" })
 //Usage /Experiment/#Experiment/#stage/#substage
-//      /0/1/2/3
+//      Arg0 -> site
+//      Arg1 -> Experiement
+//      Arg2  -> #Experiment
+//      Arg3 -> #stage
+//      Arg4 -> #substage
 
 public class Experiment extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -55,7 +59,7 @@ public class Experiment extends HttpServlet {
 		}
 		MassSpec ms = new MassSpec();
 		if (argv>1){
-			switch(arg[2]){
+			switch(arg[3]){
 			case 1:if (argv>4){
 				List <Point2D.Double> Ids = ms.getIdentifedSpectra();
 				request.setAttribute("Data", Ids);

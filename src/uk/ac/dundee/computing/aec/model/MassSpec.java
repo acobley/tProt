@@ -85,7 +85,7 @@ public class MassSpec {
 			double Y=getNormal(x,sd[j],mu[j],height[j]);
 			point=  new Point2D.Double(x,Y);
 			Points.add(point);
-		
+		    System.out.println(x+" : "+Y);
 		}
 		point=  new Point2D.Double(1084,0);
 		Points.add(point);
