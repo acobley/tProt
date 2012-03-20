@@ -32,7 +32,9 @@
          <div id="idschart"></div>
         </div>
         
-        <div id="bar">bar content</div>
+        <div id="bar"><h2>Step 2: Calculate Centroid</h2>
+        <div id="centroidchart"></div>
+        </div>
         <div id="baz">baz content</div>
     </div>
 </div>

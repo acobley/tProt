@@ -26,6 +26,7 @@ YUI().use('charts', function (Y) {
 
     loadValues(Y);
     loadIds(Y);
+    loadCentroids(Y);
 	
 });
 

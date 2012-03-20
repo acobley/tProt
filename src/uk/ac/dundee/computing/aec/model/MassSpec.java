@@ -19,6 +19,12 @@ public class MassSpec {
 		
 	}
 
+	double getNormal(double x,double sd, double mu,double height){
+		double Y;
+		Y=height*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
+		return Y;
+	}
+	
 	
 	public List <Point2D.Double> getMassSpec(){
 		//This is a dummy class returning a Pseudo MAssSpec
@@ -52,25 +58,37 @@ public class MassSpec {
 		
 		for (int j=0;j<5;j++){
 			double step=20*sd[j];
-			System.out.println("Step "+step);
+			//System.out.println("Step "+step);
 			for (double i=-2*step; i<3*step;i=i+step){
 				double x=i*sd[j]+mu[j];
 				double Y=getNormal(x,sd[j],mu[j],height[j]);
-				System.out.println(i+" : "+x+" :" +Y);
+				
 				point=  new Point2D.Double(x,Y);
 				Points.add(point);
 			}
 		}
 		point=  new Point2D.Double(1084,0);
 		Points.add(point);
-        System.out.flush();
+      
 
 		return Points;
 	}
 	
-	double getNormal(double x,double sd, double mu,double height){
-		double Y;
-		Y=height*1/(sd*Math.sqrt(2 * Math.PI))*Math.pow(Math.E,-1*Math.pow(x-mu,2)/(2*Math.pow(sd, 2)));
-		return Y;
+	
+	public List <Point2D.Double> getCentroids(){
+		//This is a dummy class returning a Pseudo MAssSpec
+		List <Point2D.Double> Points= new LinkedList<Point2D.Double>();
+		Point2D.Double point=  new Point2D.Double(1079,0);
+		Points.add(point);
+		for (int j=0;j<5;j++){
+			double x= mu[j];
+			double Y=getNormal(x,sd[j],mu[j],height[j]);
+			point=  new Point2D.Double(x,Y);
+			Points.add(point);
+		
+		}
+		point=  new Point2D.Double(1084,0);
+		Points.add(point);
+		return Points;
 	}
 }

@@ -63,6 +63,10 @@ public class Experiment extends HttpServlet {
 				List <Point2D.Double> Points = ms.getMassSpec();
 				request.setAttribute("Data", Points);
 			}
+			break;
+			case 2:List <Point2D.Double> Centroids = ms.getCentroids();
+				request.setAttribute("Data", Centroids);
+				break;
 		}
 		}
 		RequestDispatcher rdjson=request.getRequestDispatcher("/RenderJson");
