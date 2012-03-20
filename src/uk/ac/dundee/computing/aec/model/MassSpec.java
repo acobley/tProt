@@ -10,7 +10,7 @@ import java.awt.geom.Point2D.Double;
 public class MassSpec {
 	
 	
-	double sd[]={0.01,0.01,0.01,0.01,0.01};
+	double sd[]={0.05,0.05,0.05,0.05,0.05};
 	double mu[]={1080.0156,1080.5170,1081.0184,1081.5200,1082.0219};
 	double height[]={100,90,50,30,20};
 	
@@ -51,9 +51,9 @@ public class MassSpec {
 		Points.add(point);
 		
 		for (int j=0;j<5;j++){
-			double step=sd[j]/5;
+			double step=20*sd[j];
 			System.out.println("Step "+step);
-			for (double i=-20*step; i<30*step;i=i+step){
+			for (double i=-2*step; i<3*step;i=i+step){
 				double x=i*sd[j]+mu[j];
 				double Y=getNormal(x,sd[j],mu[j],height[j]);
 				System.out.println(i+" : "+x+" :" +Y);

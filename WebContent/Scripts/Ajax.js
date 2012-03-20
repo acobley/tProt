@@ -11,7 +11,8 @@ function loadValues(Y)
 	$.get("/tProt/Experiment/1/1", function(data)
 	{
 		var Values = [];
-
+		var minValue=1070;
+		var maxValue=1085;
 		data = data["Data"];
 		
 		for(var i in data)
@@ -20,14 +21,27 @@ function loadValues(Y)
 			var y = data[i]["Y"];
 			var number={'category':x,'values':y};
 			Values[i]=number;
-
+			if (i==="0"){
+				minValue=x;
+			}else{
+				maxValue=x;
+			}
 			
+		}
+		var graphAxes = {
+	            category: {
+	               position:"bottom",
+	               type:"numeric",
+	               minimum:minValue,
+	               maximum:maxValue
+	            }
 		}
 		var mychart = new Y.Chart({
 	    	
 	        dataProvider: Values,
 	        render: "#mychart",
-	        type: "line"
+	        type: "line",
+	        axes:graphAxes
 	    });
 	}, "json");
 }
@@ -39,17 +53,32 @@ function loadIds(Y)
 	$.get("/tProt/Experiment/1/1/1", function(data)
 	{
 		var Values = [];
-		var minimum=1070;
+		var minValue=1070;
+		var maxValue=1085;
+		
 		data = data["Data"];
 		
 		for(var i in data)
 		{
+			
 			var x = data[i]["X"];
 			var y = data[i]["Y"];
 			var number={'category':x,'values':y};
 			Values[i]=number;
-
+			if (i==="0"){
+				minValue=x;
+			}else{
+				maxValue=x;
+			}
 			
+		}
+		var graphAxes = {
+	            category: {
+	               position:"bottom",
+	               type:"numeric",
+	               minimum:minValue,
+	               maximum:maxValue
+	            }
 		}
 		var mychart = new Y.Chart({
 	    	
@@ -57,7 +86,7 @@ function loadIds(Y)
 	        render: "#idschart",
 	        type: "markerseries",
 	        categoryType: "numeric",
-	        minimum: minimum
+	        axes:graphAxes
 	    });
 	}, "json");
 }
