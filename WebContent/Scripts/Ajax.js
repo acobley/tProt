@@ -39,7 +39,7 @@ function loadIds(Y)
 	$.get("/tProt/Experiment/1/1/1", function(data)
 	{
 		var Values = [];
-		
+		var minimum=1070;
 		data = data["Data"];
 		
 		for(var i in data)
@@ -55,7 +55,9 @@ function loadIds(Y)
 	    	
 	        dataProvider: Values,
 	        render: "#idschart",
-	        type: "markerseries"
+	        type: "markerseries",
+	        categoryType: "numeric",
+	        minimum: minimum
 	    });
 	}, "json");
 }
