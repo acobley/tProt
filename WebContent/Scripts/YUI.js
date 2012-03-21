@@ -2,7 +2,7 @@
  * 
  */
 
-YUI().use('tabview','yql', function (Y) {
+YUI().use('tabview','yql','charts', function (Y) {
 	var TabYQL = function(config) {
 	    this.init(config);
 	}
@@ -10,6 +10,12 @@ YUI().use('tabview','yql', function (Y) {
 	TabYQL.NS = 'yql'; // plugin namespace (e.g. "tab.yql.load(myQuery)");
 	TabYQL.prototype = {
 		    init: function(config) {
+		    	if (config) {
+	                this.tab = config.host;
+	                this.query = config.query || this.query;
+	                this.errorMsg = config.errorMsg || this.errorMsg;
+	            }
+
 		        if (this.tab) {
 		            this.tab.after('selectedChange', Y.bind(this.afterSelectedChange, this));
 		        }
@@ -23,80 +29,41 @@ YUI().use('tabview','yql', function (Y) {
 		    },
 	
 		    load: function(query, afterLoad) {
-		    	
-		    	 loadValues(Y);
+		    	 if (query==="1"){
+		    	    loadValues(Y);
+		    	    loadIds(Y);
+		         }
+		    	 if (query==="2"){
+			    	    loadCentroids(Y);
+			    	  
+			         }
 		    }
 	};
 
 /* Create a new TabView instance, with content generated from script */
 var tabview = new Y.TabView(),
- feeds = {
-	    Chrome: 'chrome+browser',
-	    Firefox: 'firefox+browser',
-	    Safari: 'safari+browser',
-	    Explorer: 'explorer+browser',
-	    Opera: 'opera+browser'
+ Steps = {
+	    Step1: '1',
+	    Step2: '2'
+	   
 	};
 
-	Y.each(feeds, function(feed, label) {
+	Y.each(Steps, function(step, label) {
 	    var tab = new Y.Tab({
 	        label: label,
-	        content: 'loading...',
+	        content: ' <div id="mychart"></div>'
 	    });
 
 	    tab.plug(TabYQL, {
-	        query: 'select title, link from rss where ' +
-	            'url="http://search.news.yahoo.com/rss?p=' +
-	            feed + '"'
+	        query: '' +step
 	    });
 
 	    tabview.add(tab);
 	});
 
-	tabview.render('#demo2');
+	tabview.render('#demo');
 
 });
 
 
-// Create a new YUI instance and populate it with the required modules.
-YUI().use('tabview', function (Y) {
-    // TabView is available and ready for use. Add implementation
-    // code here.
-	var tabview = new Y.TabView({
-        srcNode: '#demo'
-    });
-	tabview.after("selectionChange", function(event) {
-	    // Do something just before "enabled" is about to be set
-		 var prev =event.prevVal;
-         var newv =event.newVal;
-		YUI().use('charts', function (Y) {
-		    // Charts is available and ready for use. Add implementation
-		    // code here.
-			// Instantiate and render the chart
-           
-		    loadValues(Y);
-		    loadIds(Y);
-		    loadCentroids(Y);
-			
-		});
-	});
-	tabview.after("init", function(event) {
-	    // Do something just before "enabled" is about to be set
-		 var prev =event.prevVal;
-         var newv =event.newVal;
-		YUI().use('charts', function (Y) {
-		    // Charts is available and ready for use. Add implementation
-		    // code here.
-			// Instantiate and render the chart
-           
-		    loadValues(Y);
-		    loadIds(Y);
-
-			
-		});
-	});
-    tabview.render();
-    
-    
-});
                 
