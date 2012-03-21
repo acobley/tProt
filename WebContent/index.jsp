@@ -18,30 +18,15 @@
   <body>
     <h1>Experimental data</h1>
     
-
-    <div id="demo">
-    <ul>
-        <li><a href="#foo">Step 1</a></li>
-        <li><a href="#bar">Step 2</a></li>
-        <li><a href="#baz">Step 3</a></li>
-    </ul>
-    <div>
-        <div id="foo"><h2>Step 1: Identify Peaks</h2>
-        <div id="mychart"></div>
-        <hr>
-         <div id="idschart"></div>
-        </div>
-        
-        <div id="bar"><h2>Step 2: Calculate Centroid</h2>
-        <div id="centroidchart"></div>
-        </div>
-        <div id="baz">baz content</div>
-    </div>
-</div>
     
     
     
     <div id="demo2">
 </div>
+<div id="NewNew"></div>
+<hr>
+ <div id="New"></div>
+ <hr>
+ <div id="Old"></div>
   </body>
 </html> 

@@ -17,7 +17,7 @@ YUI().use('tabview','yql','charts', function (Y) {
 	            }
 
 		        if (this.tab) {
-		            this.tab.after('selectedChange', Y.bind(this.afterSelectedChange, this));
+		            this.tab.on('selectedChange', Y.bind(this.afterSelectedChange, this));
 		        }
 		    },
 	
@@ -34,24 +34,24 @@ YUI().use('tabview','yql','charts', function (Y) {
 		    	    loadIds(Y);
 		         }
 		    	 if (query==="2"){
-			    	    loadCentroids(Y);
+			    	loadCentroids(Y);
 			    	  
-			         }
+			     }
 		    }
 	};
 
 /* Create a new TabView instance, with content generated from script */
 var tabview = new Y.TabView(),
  Steps = {
-	    Step1: '1',
-	    Step2: '2'
+	    1: 'Step 1',
+	    2: 'Step 2'
 	   
 	};
 
-	Y.each(Steps, function(step, label) {
+	Y.each(Steps, function(label, step) {
 	    var tab = new Y.Tab({
-	        label: label,
-	        content: ' <div id="mychart"></div>'
+	        label: ''+label,
+	        content: ' <h2>Step 1: Identify Peaks</h2>'
 	    });
 
 	    tab.plug(TabYQL, {
@@ -61,7 +61,7 @@ var tabview = new Y.TabView(),
 	    tabview.add(tab);
 	});
 
-	tabview.render('#demo');
+	tabview.render('#demo2');
 
 });
 

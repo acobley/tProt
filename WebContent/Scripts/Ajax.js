@@ -3,7 +3,7 @@ $(function(){
 	
 });
 
-
+var mychart;
 
 function loadValues(Y)
 {
@@ -36,10 +36,10 @@ function loadValues(Y)
 	               maximum:maxValue
 	            }
 		}
-		var mychart = new Y.Chart({
+		mychart = new Y.Chart({
 	    	
 	        dataProvider: Values,
-	        render: "#mychart",
+	        render: "#Old",
 	        type: "line",
 	        axes:graphAxes
 	    });
@@ -80,10 +80,10 @@ function loadIds(Y)
 	               maximum:maxValue
 	            }
 		}
-		var mychart = new Y.Chart({
+		mychart = new Y.Chart({
 	    	
 	        dataProvider: Values,
-	        render: "#idschart",
+	        render: "#New",
 	        type: "markerseries",
 	        categoryType: "numeric",
 	        axes:graphAxes
@@ -122,10 +122,9 @@ function loadCentroids(Y)
 	               maximum:maxValue
 	            }
 		}
-		var mychart = new Y.Chart({
-	    	
-	        dataProvider: Values,
-	        render: "#centroidchart",
+		mychart = new Y.Chart({
+		    dataProvider: Values,
+	        render: "#NewNew",
 	        type: "markerseries",
 	        axes:graphAxes
 	    });
