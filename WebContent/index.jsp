@@ -23,10 +23,9 @@
     
     <div id="demo2">
 </div>
-<div id="NewNew"></div>
-<hr>
- <div id="New"></div>
- <hr>
- <div id="Old"></div>
+ <div id="Stage1"></div>
+
+ <div id="Stage11"></div>
+ <div id="Stage2"></div>
   </body>
 </html> 

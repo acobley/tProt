@@ -36,10 +36,10 @@ function loadValues(Y)
 	               maximum:maxValue
 	            }
 		}
-		mychart = new Y.Chart({
+		var mychart = new Y.Chart({
 	    	
 	        dataProvider: Values,
-	        render: "#Old",
+	        render: "#Stage1",
 	        type: "line",
 	        axes:graphAxes
 	    });
@@ -80,10 +80,10 @@ function loadIds(Y)
 	               maximum:maxValue
 	            }
 		}
-		mychart = new Y.Chart({
+		var mychart = new Y.Chart({
 	    	
 	        dataProvider: Values,
-	        render: "#New",
+	        render: "#Stage11",
 	        type: "markerseries",
 	        categoryType: "numeric",
 	        axes:graphAxes
@@ -124,7 +124,7 @@ function loadCentroids(Y)
 		}
 		mychart = new Y.Chart({
 		    dataProvider: Values,
-	        render: "#NewNew",
+	        render: "#Stage2",
 	        type: "markerseries",
 	        axes:graphAxes
 	    });

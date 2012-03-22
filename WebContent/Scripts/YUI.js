@@ -30,10 +30,22 @@ YUI().use('tabview','yql','charts', function (Y) {
 	
 		    load: function(query, afterLoad) {
 		    	 if (query==="1"){
+		    		 var add=document.getElementById('Stage1'); 
+		    		 add.className='show';
+		    		 var add=document.getElementById('Stage11'); 
+		    		 add.className='show';
+		    		 var add=document.getElementById('Stage2'); 
+		    		 add.className='hide';
 		    	    loadValues(Y);
 		    	    loadIds(Y);
 		         }
 		    	 if (query==="2"){
+		    		 var add=document.getElementById('Stage1'); 
+		    		 add.className='hide';
+		    		 var add=document.getElementById('Stage11'); 
+		    		 add.className='hide';
+		    		 var add=document.getElementById('Stage2'); 
+		    		 add.className='show';
 			    	loadCentroids(Y);
 			    	  
 			     }
