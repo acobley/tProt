@@ -17,7 +17,7 @@ YUI().use('tabview','yql','charts', function (Y) {
 	            }
 
 		        if (this.tab) {
-		            this.tab.on('selectedChange', Y.bind(this.afterSelectedChange, this));
+		            this.tab.after('selectedChange', Y.bind(this.afterSelectedChange, this));
 		        }
 		    },
 	

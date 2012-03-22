@@ -3,7 +3,9 @@ $(function(){
 	
 });
 
-var mychart;
+var chart1;
+var chart11;
+var chart2;
 
 function loadValues(Y)
 {
@@ -35,9 +37,9 @@ function loadValues(Y)
 	               minimum:minValue,
 	               maximum:maxValue
 	            }
-		}
-		var mychart = new Y.Chart({
-	    	
+		};
+		if (!chart1)
+		chart1 = new Y.Chart({
 	        dataProvider: Values,
 	        render: "#Stage1",
 	        type: "line",
@@ -80,7 +82,8 @@ function loadIds(Y)
 	               maximum:maxValue
 	            }
 		}
-		var mychart = new Y.Chart({
+		if (!chart11)
+		chart11 = new Y.Chart({
 	    	
 	        dataProvider: Values,
 	        render: "#Stage11",
@@ -122,7 +125,8 @@ function loadCentroids(Y)
 	               maximum:maxValue
 	            }
 		}
-		mychart = new Y.Chart({
+		if (!chart2)
+		chart2 = new Y.Chart({
 		    dataProvider: Values,
 	        render: "#Stage2",
 	        type: "markerseries",
