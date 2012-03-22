@@ -32,7 +32,7 @@ YUI().use('tabview','yql','charts', function (Y) {
 		    },
 	
 		    load: function(query, afterLoad) {
-		    	 if (query==="1"){
+		    	 if (query==='1'){
 		    		 var add=document.getElementById('Stage1'); 
 		    		 add.className='show';
 		    		 add=document.getElementById('Stage11'); 
@@ -41,7 +41,7 @@ YUI().use('tabview','yql','charts', function (Y) {
 		    		 add.className='hide';
 		    	   
 		         }
-		    	 if (query==="2"){
+		    	 if (query==='2'){
 		    		 var add=document.getElementById('Stage1'); 
 		    		 add.className='hide';
 		    		 add=document.getElementById('Stage11'); 
@@ -52,6 +52,15 @@ YUI().use('tabview','yql','charts', function (Y) {
 					 
 			    	  
 			     }
+		    	 if (query==='3'){
+		    		 var add=document.getElementById('Stage1'); 
+		    		 add.className='hide';
+		    		 add=document.getElementById('Stage11'); 
+		    		 add.className='hide';
+		    		 add=document.getElementById('Stage2'); 
+		    		 add.className='hide';
+		    	 
+		    	 }
 		    }
 	};
 
@@ -59,7 +68,8 @@ YUI().use('tabview','yql','charts', function (Y) {
 var tabview = new Y.TabView(),
  Steps = {
 	    1: 'Step 1',
-	    2: 'Step 2'
+	    2: 'Step 2',
+	    3: 'Step 3'
 	   
 	};
 
