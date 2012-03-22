@@ -38,13 +38,15 @@ function loadValues(Y)
 	               maximum:maxValue
 	            }
 		};
-		if (!chart1)
+		if (!chart1){
 		chart1 = new Y.Chart({
 	        dataProvider: Values,
 	        render: "#Stage1",
 	        type: "line",
 	        axes:graphAxes
 	    });
+		}
+	
 	}, "json");
 }
 
@@ -82,7 +84,7 @@ function loadIds(Y)
 	               maximum:maxValue
 	            }
 		}
-		if (!chart11)
+		if (!chart11){
 		chart11 = new Y.Chart({
 	    	
 	        dataProvider: Values,
@@ -91,6 +93,8 @@ function loadIds(Y)
 	        categoryType: "numeric",
 	        axes:graphAxes
 	    });
+		}
+	
 	}, "json");
 }
 
@@ -125,12 +129,15 @@ function loadCentroids(Y)
 	               maximum:maxValue
 	            }
 		}
-		if (!chart2)
-		chart2 = new Y.Chart({
-		    dataProvider: Values,
-	        render: "#Stage2",
-	        type: "markerseries",
-	        axes:graphAxes
-	    });
+		if (!chart2){
+			chart2 = new Y.Chart({
+			    dataProvider: Values,
+		        render: "#Stage2",
+		        type: "markerseries",
+		        axes:graphAxes
+		    });
+		}
+
+
 	}, "json");
 }

@@ -5,6 +5,9 @@
 YUI().use('tabview','yql','charts', function (Y) {
 	var TabYQL = function(config) {
 	    this.init(config);
+	    loadValues(Y);
+		loadIds(Y);
+		loadCentroids(Y);
 	}
 
 	TabYQL.NS = 'yql'; // plugin namespace (e.g. "tab.yql.load(myQuery)");
@@ -32,21 +35,21 @@ YUI().use('tabview','yql','charts', function (Y) {
 		    	 if (query==="1"){
 		    		 var add=document.getElementById('Stage1'); 
 		    		 add.className='show';
-		    		 var add=document.getElementById('Stage11'); 
+		    		 add=document.getElementById('Stage11'); 
 		    		 add.className='show';
-		    		 var add=document.getElementById('Stage2'); 
+		    		 add=document.getElementById('Stage2'); 
 		    		 add.className='hide';
-		    	    loadValues(Y);
-		    	    loadIds(Y);
+		    	   
 		         }
 		    	 if (query==="2"){
 		    		 var add=document.getElementById('Stage1'); 
 		    		 add.className='hide';
-		    		 var add=document.getElementById('Stage11'); 
+		    		 add=document.getElementById('Stage11'); 
 		    		 add.className='hide';
-		    		 var add=document.getElementById('Stage2'); 
+		    		 add=document.getElementById('Stage2'); 
 		    		 add.className='show';
-			    	loadCentroids(Y);
+			    	
+					 
 			    	  
 			     }
 		    }
