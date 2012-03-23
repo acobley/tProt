@@ -40,6 +40,15 @@ public class RenderJson extends HttpServlet {
 		System.out.println("Class Name "+className);
 		if (className.compareTo("[Ljava.util.LinkedList;")==0){ 
 			System.out.println("Dealing with array of list");
+			List Data[] = (List[])request.getAttribute("Data");
+			for (int i=0; i< Data.length;i++){
+				if (Data[i] !=null){
+				   c = Data[i].getClass();
+				   className=c.getName();
+				   System.out.println("Class Name["+i+"]"+className);
+				}
+			}
+			
 	    }else if (className.compareTo("java.util.LinkedList")==0){ //Deal with a linked list
 			List Data = (List)request.getAttribute("Data");
 			JSONObject JSONObj = ProcessList(Data);
