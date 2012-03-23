@@ -96,4 +96,11 @@ public class MassSpec {
 		Points.add(point);
 		return Points;
 	}
+	
+	public  List <Point2D.Double>[] get3D(){
+		List <Point2D.Double>[] aPoints=new LinkedList[10];
+		aPoints[0]=new LinkedList<Point2D.Double>();
+		return aPoints;
+
+	}
 }
