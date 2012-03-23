@@ -19,9 +19,8 @@
     <h1>Experimental data</h1>
   
     <div id="demo2"></div>
-    
+
     <hr>
- <div id="Stage1"></div>
 
  <div id="Stage11"></div>
  <div id="Stage2"></div>

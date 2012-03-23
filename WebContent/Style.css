@@ -1,32 +1,19 @@
 @CHARSET "UTF-8";
 
-#mychart {
+#Stage1 {
     width: 600px;
     height: 400px;
 }
 
-#idschart {
+#Stage11 {
     width: 600px;
     height: 400px;
 }
 
-#centroidchart {
+#Stage2 {
     width: 600px;
     height: 400px;
 }
-#New {
-    width: 600px;
-    height: 400px;
-}
-#NewNew {
-    width: 600px;
-    height: 400px;
-}
-#Old {
-    width: 600px;
-    height: 400px;
-}
-
 .show{
 	 width: 600px;
     height: 400px;

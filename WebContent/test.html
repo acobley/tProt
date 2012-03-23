@@ -9,6 +9,10 @@
 </head>
 <body>
 <div id="demo"></div>
+<hr>
+<div id="text1"></div>
+    <div id="text"></div>
+    </hr>
 <script type="text/javascript">
 YUI().use('tabview', 'yql', function(Y) {
     // YQL plugin for Y.Tab instances
@@ -57,7 +61,10 @@ YUI().use('tabview', 'yql', function(Y) {
 
         afterSelectedChange: function(e) {
             // only load if not already loaded
+            
             if (!this.loaded) {
+            	var add=document.getElementById('text1');
+		    	add.innerHTML=''+this.query;
                 this.load(this.query, this.afterLoad);
             }
         },

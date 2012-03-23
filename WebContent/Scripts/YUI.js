@@ -3,19 +3,18 @@
  */
 
 YUI().use('tabview','yql','charts', function (Y) {
-	var TabYQL = function(config) {
+	var TabGraph = function(config) {
 	    this.init(config);
-	    loadValues(Y);
-		loadIds(Y);
-		loadCentroids(Y);
+
 	}
 
-	TabYQL.NS = 'yql'; // plugin namespace (e.g. "tab.yql.load(myQuery)");
-	TabYQL.prototype = {
+	TabGraph.NS = 'yql'; // plugin namespace (e.g. "tab.yql.load(myQuery)");
+	TabGraph.prototype = {
 		    init: function(config) {
 		    	if (config) {
 	                this.tab = config.host;
 	                this.query = config.query || this.query;
+
 	                this.errorMsg = config.errorMsg || this.errorMsg;
 	            }
 
@@ -23,44 +22,37 @@ YUI().use('tabview','yql','charts', function (Y) {
 		            this.tab.after('selectedChange', Y.bind(this.afterSelectedChange, this));
 		        }
 		    },
-	
+		    loaded: false,
+	        query: '',
+	        errorMsg: 'There was a problem loading the content',
+	        tab: null,
+	        
 		    afterSelectedChange: function(e) {
 		        // only load if not already loaded
+		    	
 		        if (!this.loaded) {
+		        	
 		            this.load(this.query, this.afterLoad);
 		        }
 		    },
 	
 		    load: function(query, afterLoad) {
-		    	 if (query==='1'){
-		    		 var add=document.getElementById('Stage1'); 
-		    		 add.className='show';
-		    		 add=document.getElementById('Stage11'); 
-		    		 add.className='show';
-		    		 add=document.getElementById('Stage2'); 
-		    		 add.className='hide';
-		    	   
-		         }
-		    	 if (query==='2'){
-		    		 var add=document.getElementById('Stage1'); 
-		    		 add.className='hide';
-		    		 add=document.getElementById('Stage11'); 
-		    		 add.className='hide';
-		    		 add=document.getElementById('Stage2'); 
-		    		 add.className='show';
-			    	
-					 
-			    	  
-			     }
-		    	 if (query==='3'){
-		    		 var add=document.getElementById('Stage1'); 
-		    		 add.className='hide';
-		    		 add=document.getElementById('Stage11'); 
-		    		 add.className='hide';
-		    		 add=document.getElementById('Stage2'); 
-		    		 add.className='hide';
-		    	 
-		    	 }
+		    	
+		    	this.loaded=true;
+		    	if (query==='1'){
+		    	   content='<h2>Find Peaks</h2>'
+		    	   content=content+'<h3>Raw Mass Spec</h3><div id="Stage1"></div><h3>Peaks</h3><div id="Stage11"></div>';
+		    	   this.tab.set('content',content);
+		    	   loadValues(Y);
+		    	   loadIds(Y);
+		    	}
+		    	if (query==='2'){
+		    		content='<h2>Find Centroids</h2>'
+			    	   content=content+'<div id="Stage2"></div>';
+			    	   this.tab.set('content',content);
+			    	   loadCentroids(Y);
+			    	}
+		    	
 		    }
 	};
 
@@ -76,10 +68,10 @@ var tabview = new Y.TabView(),
 	Y.each(Steps, function(label, step) {
 	    var tab = new Y.Tab({
 	        label: ''+label,
-	        content: ' <h2>Step 1: Identify Peaks</h2>'
+	        content: ' <h2>Step 1: Identify Peaks</h2><p>'+step+' : '+label
 	    });
 
-	    tab.plug(TabYQL, {
+	    tab.plug(TabGraph, {
 	        query: '' +step
 	    });
 
