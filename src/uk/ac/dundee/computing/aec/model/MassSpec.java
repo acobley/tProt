@@ -100,6 +100,22 @@ public class MassSpec {
 	public  List <Point2D.Double>[] get3D(){
 		List <Point2D.Double>[] aPoints=new LinkedList[10];
 		aPoints[0]=new LinkedList<Point2D.Double>();
+		Point2D.Double point=  new Point2D.Double(1079,0);
+		
+		
+		int j=0;
+			double step=20*sd[j];
+			//System.out.println("Step "+step);
+			for (double i=-2*step; i<3*step;i=i+sd[j]){
+				double x=i*sd[j]+mu[j];
+				double Y=getNormal(x,sd[j],mu[j],height[j]);
+				
+				point=  new Point2D.Double(x,Y);
+				aPoints[0].add(point);
+			}
+		
+		
+		
 		aPoints[1]=new LinkedList<Point2D.Double>();
 		return aPoints;
 
