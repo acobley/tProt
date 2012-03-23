@@ -39,24 +39,7 @@ public class RenderJson extends HttpServlet {
 		String className=c.getName();
 		if (className.compareTo("java.util.LinkedList")==0){ //Deal with a linked list
 			List Data = (List)request.getAttribute("Data");
-			Iterator iterator;
-			JSONObject JSONObj=new JSONObject();
-			JSONArray Parts=new JSONArray();
-			iterator = Data.iterator();     
-			while (iterator.hasNext()){
-				Object Value=iterator.next();
-				JSONObject obj =ProcessObject(Value);
-				try {
-					Parts.put(obj);
-				}catch (Exception JSONet){
-         			System.out.println("JSON Fault"+ JSONet);
-         		}
-			}
-			try{
-				JSONObj.put("Data",Parts);
-			}catch (Exception JSONet){
-     			System.out.println("JSON Fault"+ JSONet);
-     		}
+			JSONObject JSONObj = ProcessList(Data);
 			if (JSONObj!=null){
 				PrintWriter out = response.getWriter();
 				out.print(JSONObj);
@@ -72,6 +55,30 @@ public class RenderJson extends HttpServlet {
 		}
 	}
 
+	
+	private JSONObject ProcessList(List Data){
+		
+		Iterator iterator;
+		JSONObject JSONObj=new JSONObject();
+		JSONArray Parts=new JSONArray();
+		iterator = Data.iterator();     
+		while (iterator.hasNext()){
+			Object Value=iterator.next();
+			JSONObject obj =ProcessObject(Value);
+			try {
+				Parts.put(obj);
+			}catch (Exception JSONet){
+     			System.out.println("JSON Fault"+ JSONet);
+     		}
+		}
+		try{
+			JSONObj.put("Data",Parts);
+		}catch (Exception JSONet){
+ 			System.out.println("JSON Fault"+ JSONet);
+ 		}
+		return JSONObj;
+	}
+	
 	private JSONObject  ProcessObject(Object Value){
 		JSONObject Record=new JSONObject();
 		
