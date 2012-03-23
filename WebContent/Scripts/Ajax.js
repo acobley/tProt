@@ -133,7 +133,7 @@ function loadCentroids(Y)
 			chart2 = new Y.Chart({
 			    dataProvider: Values,
 		        render: "#Stage2",
-		        type: "markerseries",
+		        type: "line",
 		        axes:graphAxes
 		    });
 		}
