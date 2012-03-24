@@ -48,7 +48,7 @@ public class RenderJson extends HttpServlet {
 				   c = Data[i].getClass();
 				   className=c.getName();
 				   System.out.println("Class Name["+i+"]"+className);
-				   JSONObject JSONObj = ProcessList(Data[i]);
+				   JSONObject JSONObj = ProcessList(Data[i],i);
 				   Parts.put(JSONObj);
 				}
 			}
@@ -64,7 +64,7 @@ public class RenderJson extends HttpServlet {
 			
 	    }else if (className.compareTo("java.util.LinkedList")==0){ //Deal with a linked list
 			List Data = (List)request.getAttribute("Data");
-			JSONObject JSONObj = ProcessList(Data);
+			JSONObject JSONObj = ProcessList(Data,-1);
 			if (JSONObj!=null){
 				PrintWriter out = response.getWriter();
 				out.print(JSONObj);
@@ -81,7 +81,7 @@ public class RenderJson extends HttpServlet {
 	}
 
 	
-	private JSONObject ProcessList(List Data){
+	private JSONObject ProcessList(List Data,int i){
 		
 		Iterator iterator;
 		JSONObject JSONObj=new JSONObject();
@@ -97,7 +97,10 @@ public class RenderJson extends HttpServlet {
      		}
 		}
 		try{
-			JSONObj.put("Data",Parts);
+			if (i >-1)
+				JSONObj.put("Data"+i,Parts);
+			else
+				JSONObj.put("Data",Parts);
 		}catch (Exception JSONet){
  			System.out.println("JSON Fault"+ JSONet);
  		}
