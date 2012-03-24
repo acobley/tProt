@@ -22,7 +22,5 @@
 
     <hr>
 
- <div id="Stage11"></div>
- <div id="Stage2"></div>
   </body>
 </html> 

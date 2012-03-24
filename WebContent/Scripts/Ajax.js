@@ -141,3 +141,59 @@ function loadCentroids(Y)
 
 	}, "json");
 }
+
+
+function load3Ds(Y)
+{
+
+	$.get("/tProt/Experiment/1/3", function(rdata)
+	{
+		var Values = [];
+		var minValue=1070;
+		var maxValue=1085;
+		count=rdata["Count"];
+		array=rdata["Array"];
+		
+		var offset=0;
+		
+		for (var j=0;j<1;j++){
+			var tmp=0;
+			data = array[j]["Data"];
+			for(var i in data)
+			{
+				var x = data[i]["X"];
+				var y = data[i]["Y"];
+				var Series='y'+j;
+				var number={'category':x,'y0':y};
+				Values[i+offset]=number;
+				if (i==="0"){
+					minValue=x;
+				}else{
+					maxValue=x;
+				}
+				tmp++;
+				
+			}
+			offset=tmp;
+		}
+		var graphAxes = {
+	            category: {
+	               position:"bottom",
+	               type:"numeric",
+	               minimum:minValue,
+	               maximum:maxValue
+	            }
+		}
+		if (!chart2){
+			chart2 = new Y.Chart({
+			    dataProvider: Values,
+		        render: "#Stage3",
+		        type: "line",
+		        axes:graphAxes
+		    });
+		}
+
+
+	}, "json");
+}
+

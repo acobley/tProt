@@ -52,6 +52,12 @@ YUI().use('tabview','yql','charts', function (Y) {
 			    	   this.tab.set('content',content);
 			    	   loadCentroids(Y);
 			    	}
+		    	if (query==='3'){
+		    		content='<h2>3D graphs</h2>'
+			    	content=content+'<div id="Stage3"></div>';
+			    	this.tab.set('content',content);
+			    	load3Ds(Y);
+			    }
 		    	
 		    }
 	};

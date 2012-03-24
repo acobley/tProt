@@ -101,7 +101,7 @@ public class MassSpec {
 		double sdl[]={0.5,0.2,0.1,0.075,0.05,0.075,0.1,0.2,0.5};
 		double mul[]={1080.0156,1080.5170,1081.0184,1081.5200,1082.0219};
 		double heightl[]={20,30,50,90,100,90,50,30,20};
-		List <Point2D.Double>[] aPoints=new LinkedList[20];
+		List <Point2D.Double>[] aPoints=new LinkedList[sdl.length];
 		
 		for (int j=0;j<sdl.length;j++){
 			aPoints[j]=new LinkedList<Point2D.Double>();

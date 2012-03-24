@@ -43,6 +43,13 @@ public class RenderJson extends HttpServlet {
 			List Data[] = (List[])request.getAttribute("Data");
 			JSONObject JSONTop=new JSONObject();
 			JSONArray Parts=new JSONArray();
+			JSONObject Count=new JSONObject();
+			try{
+			   //Count.put("Count", );
+			   JSONTop.put("Count",Data.length);
+			}catch(Exception et){
+				System.out.println("Can't package count"+et);
+			}
 			for (int i=0; i< Data.length;i++){
 				if (Data[i] !=null){
 				   c = Data[i].getClass();
@@ -98,7 +105,7 @@ public class RenderJson extends HttpServlet {
 		}
 		try{
 			if (i >-1)
-				JSONObj.put("Data"+i,Parts);
+				JSONObj.put("Data",Parts);
 			else
 				JSONObj.put("Data",Parts);
 		}catch (Exception JSONet){
