@@ -6,6 +6,7 @@ $(function(){
 var chart1;
 var chart11;
 var chart2;
+var chart3;
 
 function loadValues(Y)
 {
@@ -165,7 +166,7 @@ function load3Ds(Y)
 				var y = data[i]["Y"];
 				var Series='y'+j;
 				var number={'category':x,'y0':y};
-				Values[i+offset]=number;
+				Values[i]=number;
 				if (i==="0"){
 					minValue=x;
 				}else{
@@ -184,8 +185,8 @@ function load3Ds(Y)
 	               maximum:maxValue
 	            }
 		}
-		if (!chart2){
-			chart2 = new Y.Chart({
+		if (!chart3){
+			chart3 = new Y.Chart({
 			    dataProvider: Values,
 		        render: "#Stage3",
 		        type: "line",
