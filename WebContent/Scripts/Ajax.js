@@ -1,25 +1,72 @@
-$(function(){
-	
-	
-});
-
 var chart1;
 var chart11;
 var chart2;
 var chart3;
 
-function loadValues(Y)
-{
 
-	$.get("/tProt/Experiment/1/1", function(data)
-	{
-		var Values = [];
-		var minValue=1070;
-		var maxValue=1085;
-		data = data["Data"];
+function load3Ds(Y) {
+
+	$.get("/tProt/Experiment/1/3", function (rdata) {
+		var Values = [], minValue = 1070, maxValue = 1085,
+		count = rdata["Count"],
+		array = rdata["Array"],
+		data = [],
+		offset = 0,
+		j,i;
 		
-		for(var i in data)
-		{
+		for (j=0; j<count; j++){
+		   data[j]= array[j]["Data"];
+		}
+		
+		
+		for (i in data[0]) {
+			var x = data[i]["X"];
+			var y = data[i]["Y"];
+			var Series='y'+j;
+			var number={'category':x,'y0':y};
+			Values[i]=number;
+			if (i==="0"){
+				minValue=x;
+			}else{
+				maxValue=x;
+			}
+			
+			
+		}
+		
+		
+		var graphAxes = {
+	            category: {
+	               position:"bottom",
+	               type:"numeric",
+	               minimum:minValue,
+	               maximum:maxValue
+	            }
+		}
+		if (!chart3){
+			chart3 = new Y.Chart({
+			    dataProvider: Values,
+		        render: "#Stage3",
+		        type: "line",
+		        axes:graphAxes
+		    });
+		}
+
+
+	}, "json");
+}
+
+
+
+
+function loadValues(Y) {
+
+	$.get("/tProt/Experiment/1/1", function (data) {
+		var Values = [], minValue = 1070, maxValue = 1085;
+		
+		var data = data["Data"];
+		
+		for(var i in data) {
 			var x = data[i]["X"];
 			var y = data[i]["Y"];
 			var number={'category':x,'values':y};
@@ -52,19 +99,16 @@ function loadValues(Y)
 }
 
 
-function loadIds(Y)
-{
+function loadIds(Y) {
 
-	$.get("/tProt/Experiment/1/1/1", function(data)
-	{
+	$.get("/tProt/Experiment/1/1/1", function (data) {
 		var Values = [];
 		var minValue=1070;
 		var maxValue=1085;
 		
 		data = data["Data"];
 		
-		for(var i in data)
-		{
+		for(var i in data){
 			
 			var x = data[i]["X"];
 			var y = data[i]["Y"];
@@ -99,18 +143,15 @@ function loadIds(Y)
 	}, "json");
 }
 
-function loadCentroids(Y)
-{
+function loadCentroids(Y) {
 
-	$.get("/tProt/Experiment/1/2", function(data)
-	{
+	$.get("/tProt/Experiment/1/2", function (data) {
 		var Values = [];
 		var minValue=1070;
 		var maxValue=1085;
 		data = data["Data"];
 		
-		for(var i in data)
-		{
+		for(var i in data) {
 			var x = data[i]["X"];
 			var y = data[i]["Y"];
 			var number={'category':x,'values':y};
@@ -143,58 +184,4 @@ function loadCentroids(Y)
 	}, "json");
 }
 
-
-function load3Ds(Y)
-{
-
-	$.get("/tProt/Experiment/1/3", function(rdata)
-	{
-		var Values = [];
-		var minValue=1070;
-		var maxValue=1085;
-		count=rdata["Count"];
-		array=rdata["Array"];
-		
-		var offset=0;
-		
-		for (var j=0;j<1;j++){
-			var tmp=0;
-			data = array[j]["Data"];
-			for(var i in data)
-			{
-				var x = data[i]["X"];
-				var y = data[i]["Y"];
-				var Series='y'+j;
-				var number={'category':x,'y0':y};
-				Values[i]=number;
-				if (i==="0"){
-					minValue=x;
-				}else{
-					maxValue=x;
-				}
-				tmp++;
-				
-			}
-			offset=tmp;
-		}
-		var graphAxes = {
-	            category: {
-	               position:"bottom",
-	               type:"numeric",
-	               minimum:minValue,
-	               maximum:maxValue
-	            }
-		}
-		if (!chart3){
-			chart3 = new Y.Chart({
-			    dataProvider: Values,
-		        render: "#Stage3",
-		        type: "line",
-		        axes:graphAxes
-		    });
-		}
-
-
-	}, "json");
-}
 
