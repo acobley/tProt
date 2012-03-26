@@ -71,7 +71,7 @@ public class Experiment extends HttpServlet {
 			case 2:List <Point2D.Double> Centroids = ms.getCentroids();
 				request.setAttribute("Data", Centroids);
 				break;
-			case 3:List <Point2D.Double> Ds[] = ms.get3D();
+			case 3:List <Point2D.Double[]> Ds = ms.get3D();
 				request.setAttribute("Data", Ds);
 			break;
 		}

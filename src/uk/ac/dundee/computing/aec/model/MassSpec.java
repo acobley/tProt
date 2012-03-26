@@ -97,30 +97,31 @@ public class MassSpec {
 		return Points;
 	}
 	
-	public  List <Point2D.Double>[] get3D(){
+	public  List <Point2D.Double[]> get3D(){
 		double sdl[]={0.5,0.2,0.1,0.075,0.05,0.075,0.1,0.2,0.5};
 		double mul[]={1080.0156,1080.5170,1081.0184,1081.5200,1082.0219};
 		double heightl[]={20,30,50,90,100,90,50,30,20};
-		List <Point2D.Double>[] aPoints=new LinkedList[sdl.length];
+		LinkedList <Point2D.Double[]> Points= new LinkedList<Point2D.Double[]>();
 		
-		for (int j=0;j<sdl.length;j++){
-			aPoints[j]=new LinkedList<Point2D.Double>();
-			Point2D.Double point=  new Point2D.Double(1079,0);
-			System.out.println(j);
-			double step=20*sdl[j];
+			
+			double step=20*0.05;
 			//System.out.println("Step "+step);
-			for (double i=-2*step; i<3*step;i=i+sdl[j]){
-				double x=i*sdl[j]+mul[0];
-				double Y=getNormal(x,sdl[j],mul[0],heightl[j]);
+			for (double i=-2*step; i<3*step;i=i+step){
+				Point2D.Double[] aPoints=new Point2D.Double[sdl.length];
+				for (int j=0;j<sdl.length;j++){
 				
-				point=  new Point2D.Double(x,Y);
-				aPoints[j].add(point);
+					double x=i*sdl[j]+mul[0];
+					double Y=getNormal(x,sdl[j],mul[0],heightl[j]);
+					
+					Point2D.Double point=  new Point2D.Double(x,Y);
+					aPoints[j] = point;
+				}
+				Points.add(aPoints);
 			}
-		}
 		
 		
-		aPoints[1]=new LinkedList<Point2D.Double>();
-		return aPoints;
+		
+		return Points;
 
 	}
 }
