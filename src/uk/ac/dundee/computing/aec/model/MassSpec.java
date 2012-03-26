@@ -104,9 +104,9 @@ public class MassSpec {
 		LinkedList <Point2D.Double[]> Points= new LinkedList<Point2D.Double[]>();
 		
 			
-			double step=20*0.05;
+			double step=0.05;
 			//System.out.println("Step "+step);
-			for (double i=-2*step; i<3*step;i=i+step){
+			for (double i=-20*step; i<30*step;i=i+step){
 				Point2D.Double[] aPoints=new Point2D.Double[sdl.length];
 				for (int j=0;j<sdl.length;j++){
 				

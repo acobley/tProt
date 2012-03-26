@@ -1,5 +1,6 @@
 package uk.ac.dundee.computing.aec.views;
 
+import java.awt.geom.Point2D;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
+import org.json.JSONTokener;
+
 import java.util.*;
 import java.lang.reflect.*;
 import java.io.PrintWriter;
@@ -96,17 +99,29 @@ public class RenderJson extends HttpServlet {
 		iterator = Data.iterator();     
 		while (iterator.hasNext()){
 			Object Value=iterator.next();
-			JSONObject obj =ProcessObject(Value);
-			try {
-				Parts.put(obj);
-			}catch (Exception JSONet){
-     			System.out.println("JSON Fault"+ JSONet);
-     		}
+			Class c = Value.getClass();
+			String className=c.getName();
+			System.out.println("List Class Name "+className);
+			if (className.compareTo("[Ljava.awt.geom.Point2D$Double;")!=0){
+				JSONObject obj =ProcessObject(Value);
+				try {
+					Parts.put(obj);
+				}catch (Exception JSONet){
+	     			System.out.println("JSON Fault"+ JSONet);
+	     		}
+			}
+			else {
+				try{
+				    JSONArray Array = new JSONArray( Value);
+				    Parts.put(Array);
+				}catch (Exception et){
+					System.out.println("Can't create Json Array " +et);
+				}
+			}
+
 		}
 		try{
-			if (i >-1)
-				JSONObj.put("Data",Parts);
-			else
+			
 				JSONObj.put("Data",Parts);
 		}catch (Exception JSONet){
  			System.out.println("JSON Fault"+ JSONet);
