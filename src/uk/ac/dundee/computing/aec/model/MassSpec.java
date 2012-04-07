@@ -110,11 +110,12 @@ public class MassSpec {
 				Point2D.Double[] aPoints=new Point2D.Double[sdl.length];
 				for (int j=0;j<sdl.length;j++){
 				
-					double x=i*sdl[j]+mul[0];
+					double x=i+mul[0];
 					double Y=getNormal(x,sdl[j],mul[0],heightl[j]);
 					
 					Point2D.Double point=  new Point2D.Double(x,Y);
 					aPoints[j] = point;
+					//System.out.println("add point "+j);
 				}
 				Points.add(aPoints);
 			}

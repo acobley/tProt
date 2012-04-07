@@ -18,10 +18,11 @@ function load3Ds(Y) {
 		   data[j]= array[j]["Data"];
 		}
 		
-		
-		for (i in data[0]) {
-			var x = data[i]["X"];
-			var y = data[i]["Y"];
+		dValues=data[0]
+		for (i in dValues) {
+			
+			var x = dValues[i]["X"];
+			var y = dValues[i]["Y"];
 			var Series='y'+j;
 			var number={'category':x,'y0':y};
 			Values[i]=number;

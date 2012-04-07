@@ -110,16 +110,26 @@ public class RenderJson extends HttpServlet {
 	     			System.out.println("JSON Fault"+ JSONet);
 	     		}
 			}
-			else {
+			else 
 				try{
-				    JSONArray Array = new JSONArray( Value);
+					Point2D.Double[] aPoints = (Point2D.Double[])Value;
+					System.out.println("aPoints Length "+aPoints.length);
+				    JSONArray Array = new JSONArray( );
+				    for (int j=0;j <aPoints.length;j++){
+				    	
+				    	//System.out.print("j "+j );
+				    	
+				    	Array.put(ProcessObject(aPoints[j]));
+				    	
+				    }
+				    System.out.println("Array "+Array);
 				    Parts.put(Array);
 				}catch (Exception et){
 					System.out.println("Can't create Json Array " +et);
 				}
 			}
 
-		}
+		
 		try{
 			
 				JSONObj.put("Data",Parts);
