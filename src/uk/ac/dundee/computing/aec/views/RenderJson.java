@@ -42,13 +42,13 @@ public class RenderJson extends HttpServlet {
 		String className=c.getName();
 		System.out.println("Class Name "+className);
 		if (className.compareTo("[Ljava.util.LinkedList;")==0){ 
-			//System.out.println("Dealing with array of list");
+			System.out.println("Dealing with array of list");
 			List Data[] = (List[])request.getAttribute("Data");
 			JSONObject JSONTop=new JSONObject();
 			JSONArray Parts=new JSONArray();
 			JSONObject Count=new JSONObject();
 			try{
-			   //Count.put("Count", );
+			   
 			   JSONTop.put("Count",Data.length);
 			}catch(Exception et){
 				System.out.println("Can't package count"+et);
@@ -113,7 +113,7 @@ public class RenderJson extends HttpServlet {
 			else 
 				try{
 					Point2D.Double[] aPoints = (Point2D.Double[])Value;
-					System.out.println("aPoints Length "+aPoints.length);
+					//System.out.println("aPoints Length "+aPoints.length);
 				    JSONArray Array = new JSONArray( );
 				    for (int j=0;j <aPoints.length;j++){
 				    	
@@ -122,7 +122,8 @@ public class RenderJson extends HttpServlet {
 				    	Array.put(ProcessObject(aPoints[j]));
 				    	
 				    }
-				    System.out.println("Array "+Array);
+				    //System.out.println("Array "+Array);
+				    
 				    Parts.put(Array);
 				}catch (Exception et){
 					System.out.println("Can't create Json Array " +et);

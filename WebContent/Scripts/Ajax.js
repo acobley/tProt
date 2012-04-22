@@ -7,33 +7,34 @@ var chart3;
 function load3Ds(Y) {
 
 	$.get("/tProt/Experiment/1/3", function (rdata) {
-		var Values = [], minValue = 1070, maxValue = 1085,
-		count = rdata["Count"],
-		array = rdata["Array"],
-		data = [],
-		offset = 0,
-		j,i;
+		var Values = [], minValue = 1070, maxValue = 1085;
+		data=rdata["Data"];
+		var s=0;
 		
-		for (j=0; j<count; j++){
-		   data[j]= array[j]["Data"];
-		}
-		
-		dValues=data[0]
-		for (i in dValues) {
-			
-			var x = dValues[i]["X"];
-			var y = dValues[i]["Y"];
-			var Series='y'+j;
-			var number={'category':x,'y0':y};
-			Values[i]=number;
-			if (i==="0"){
-				minValue=x;
-			}else{
-				maxValue=x;
+		for (i in data) {
+			adata=data[i];
+			var series="series"+s;
+			for (j in adata){
+				odata=adata[j];
+				var x = odata["X"];
+				var y = odata["Y"];
+				if (s==0){
+				   var number={'category':x,'series0':y}; 
+				}else{
+					var number={'category':x,'series1':y}; 
+				}
+				Values[j]=number;
+				if (j==="0"){
+					minValue=x;
+				}else{
+					maxValue=x;
+				}
 			}
-			
+			var temp=adata;
+			s++;
 			
 		}
+		
 		
 		
 		var graphAxes = {
